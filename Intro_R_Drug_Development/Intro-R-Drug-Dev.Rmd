@@ -95,7 +95,7 @@ a {
 
 ## Things You Should Know
 - There are no stupid questions
-- Because we have limited time, please write down questions as they occur to you, and then ask them when the instructor pauses for questions
+- Becasue we have limited time, please write down questions as they occur to you, and then ask them when the instructor pauses for questions
 - You will not learn all of R today
 - Don't be afraid to experiment and try things out: you won't blow up anything important if you make a mistake
 - Red is an Action Item for you
@@ -161,22 +161,16 @@ group members. Tell them:
 - Target Audience
 - Goal of session
 
-</div>
-
 ## Self Assessment
-
-<div class="red2"> 
 
 - If interested...
 - https://shiny.rstudio.com/tutorial/quiz/
-
-</div>
 
 # Part 1 Setup
 
 
 
-## Setup in RTT
+## Setup
 
 - https://github.com/sol-eng/classroom-getting-started
 - R & Python (https://solutions.rstudio.com/python/overview/)
@@ -184,7 +178,7 @@ group members. Tell them:
 - IDE
 - Projects
 - Sessions
-- Git/Github (https://happygitwithr.com/)
+- [Git](https://rstudio-pubs-static.s3.amazonaws.com/443271_e3d08417368642e19588f0bbdede90d7.html#(16))/Github (https://happygitwithr.com/)
 - RStudio Connect
 - Shiny
 - Repeatable & Reproducible
@@ -226,14 +220,9 @@ group members. Tell them:
  </div>
 </div>
 
-
 ## Setup & Quick Intro
-
 - Panes
 - Buttons
-<td><img src="panes.png" width="600" /></td>
-</tr>
-</table>
 
 
 
@@ -244,9 +233,6 @@ group members. Tell them:
 
 ## Let's go with ToothGrowth
 - http://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ToothGrowth.html
-
-<div class="red2"> 
-
 - data(ToothGrowth)
 - ?ToothGrowth
 - ToothGrowth
@@ -256,7 +242,7 @@ group members. Tell them:
 - ToothGrowth %>% View("TG")
 - Any errors?
 
-</div>
+
 
 
 
@@ -277,9 +263,6 @@ group members. Tell them:
 - https://r-graphics.org/
 - http://www-bcf.usc.edu/~gareth/ISL/
 - http://appliedpredictivemodeling.com/
-- https://bookdown.org/yihui/rmarkdown/
-- https://www.tidytextmining.com/
-- https://adv-r.hadley.nz/
 
 ## R for Data Science
 
@@ -374,68 +357,8 @@ ggplot(data = ToothGrowth) +
 - [How do I select an R package for my clinical workflow?](https://www.phusewiki.org/docs/2019%20US%20Connect%20Final%20Papers/TT/how-do-i-pick-an-r-package-for-my-clinical-workflow-bowsher-lopp-20454.pdf)
 
 
-## FIRST THINGS FIRST…DATA
-
-- Read	in	data	with	readr,	haven,	readxl
-- readr (read_csv(),	read_tsv(),	read_delim())
-- haven (read_sas(),	read_spss(),	read_stata(),	read_dta())
-- readxl (read_xls(),	read_xlsx(),	read_excel())
-
-## Importing Data
-
-- Import Dataset GUI
-
-<div class="columns-4">![importtool](importtool.png)</a>
-
-</div>
-
-
-
-
-# Genius of R Markdown...
-
-## Part 2.0 - R Notebooks
-
-<div class="columns-2">
-- [Notebooks](http://rmarkdown.rstudio.com/r_notebooks.html)
-- [Notebook Background](https://rviews.rstudio.com/2017/03/15/why-i-love-r-notebooks/)
-- [Using rmarkdown and parameterised reports Mike K Smith](https://resources.rstudio.com/rstudio-conf-2019/the-lazy-and-easily-distracted-report-writer-using-rmarkdown-and-parameterised-reports)
-- Leonardo da Vinci…Page from the Codex Atlanticus shows notes and images about water wheels and Archimedean Screws
-- Combine in a single document: Narrative, Code, Output & then Render to HTML
-
-<div class="img-col">
-<a href="https://blog.rstudio.com/2016/10/05/r-notebooks/">![labnotebook4](labnotebook4.png)</a>
-
-</div>
-
-## Part 2.0 - R Notebooks cont.
-
-<div class="columns-2">
-- Number 3: Notebooks are for doing science
-- Number 2: R Notebooks have great features
-- Number 1: R Notebooks make it easy to create and share reports
-- http://r4ds.had.co.nz/r-markdown-workflow.html
-- 3_RMD_Notebook_Tidyverse
-
-<div class="img-col">
-<a href="http://rmarkdown.rstudio.com/r_notebooks.html#saving_and_sharing">![notebook-demo](notebook-demo.png)</a>
-
-</div>
-
-## Setup Chunk
-
-- The setup chunk is always run once before anything else
-and is a great place to load packages
-
-<div class="columns-4">![setup](setup.png)</a>
-
-</div>
-
 
 ## Let us explore the data set a bit
-
-<div class="red2"> 
-
 - ToothGrowth %>% write_csv('ToothGrowth.csv')
 - ToothGrowth2 <-read_csv("ToothGrowth.csv")
 - names(ToothGrowth) # names of the variables
@@ -445,24 +368,12 @@ and is a great place to load packages
 - head(ToothGrowth, n = 5)
 - tail(ToothGrowth, n = 5)
 
-</div>
 
 
-##  Visualizations using Esquisse
-
-- RStudio add-in to make plots with ggplot2
-
-<div class="columns-4">![Esquisse](Esquisse.png)</a>
-
-</div>
 
 
-## Your Turn 3 Mins 
-
-<div class="red2"> 
-
-- Take your data import code and visualization code and insert it into a notebook
-- Import ToothGrowth (or any dataset)
+## Your Turn
+- Import ToothGrowth
 - Explore Esquisse
 - Explore ToothGrowth
 - Rpubs
@@ -470,7 +381,7 @@ and is a great place to load packages
 - https://rpubs.com/dhyaneshbabu/375116
 - https://datascience-enthusiast.com/R/inference.html
 
-</div>
+
 
 
 
@@ -483,7 +394,6 @@ and is a great place to load packages
 - Factors
 - Data frame
 - Tibble
-- Is ToothGrowth a Tibble? Hint: class(ToothGrowth)
 
 ## WHAT I LIKE ABOUT TIBBLES..
 
@@ -536,37 +446,6 @@ storms <-tribble(
 
 
 
-## TIBBLES – QUICK INTRO
-- as_tibble()
-- as_tibble(ToothGrowth)
-- This will work for reasonable inputs that are already data.frames, lists,
-matrices, or tables.
-- There are two main differences in the usage of a tibble vs. a classic data.frame:
-printing and subsetting
-- Tibbles show only the first 10 rows
-- Each column reports its type, a nice feature borrowed from str()
-- package?tibble
-
-## TIBBLES – WHAT TO KNOW
-- tibble() does much less than data.frame():
-- A. it never changes the type of the inputs (e.g. it never converts strings to
-factors!)
-- B. it never changes the names of variables, and it never creates row names
-- Cdata.frame() vs. modern data_frame():
-- Base R has a burning desire to turn character information into factor...via
-read.table() & data.frame() and other functions are also eager
-- To shut this down, use stringsAsFactors = FALSE in read.table() and
-data.frame() or – even better – use the tidyverse!
-- readr::read_csv(), readr::read_tsv(), etc. For data frame creation, use
-tibble::tibble()
-
-## Tidy Data
-
-<td><img src="tidydata.png" width="800" /></td>
-</tr>
-</table>
-
-
 
 ## Remember dplyr single table verbs 
 
@@ -590,12 +469,6 @@ tibble::tibble()
 - And then
 - mutate(babynames, percent = prop * 100)
 - babynames %>% mutate(percent = prop * 100)
-
-## Pipes
-
-<td><img src="pipe.png" width="800" /></td>
-</tr>
-</table>
 
 
 ## AE Influence
@@ -623,7 +496,6 @@ tibble::tibble()
 - http://manishbarnwal.com/blog/2016/10/05/install_a_package_particular_version_in_R/
 - https://github.com/r-lib/sessioninfo
 - https://support.rstudio.com/hc/en-us/articles/360002242413-Multiple-versions-of-R
-- https://github.com/elbersb/tidylog
 
 
 
@@ -773,16 +645,12 @@ tibble::tibble()
 - https://shiny.rstudio.com/articles/build.html
 - http://shiny.rstudio.com/tutorial/written-tutorial/lesson2/
 
-## Your Turn 3 Mins
-
-<div class="red2"> 
+## Your Turn
 
 - Create a new Shiny app in the IDE by going to 'File' and select 'New File' and select 'Shiny Web App'
 - Select Multiple File
 - Name it yournameShiny
 - Review Code
-
-</div>
 
 ## Intro Process 
  - http://shiny.rstudio.com/gallery/
@@ -791,19 +659,15 @@ tibble::tibble()
  - http://www.pharmasug.org/proceedings/2018/AD/PharmaSUG-2018-AD24.pdf
  - http://www.pharmasug.org/proceedings/2016/DG/PharmaSUG-2016-DG10.pdf
  - https://www.phusewiki.org/docs/CSS2015Presentations/PP26FINAL.pdf
- - https://www.pharmasug.org/proceedings/2019/AD/PharmaSUG-2019-AD-048.pdf
  
-## Your Turn 5 Mins Shiny Development Example - 1_Shiny_ToothGrowth_Basic 
-<div class="red2"> 
+## Your Turn Shiny Development Example - 1_Shiny_ToothGrowth_Basic 
 
 - Go [here](http://shiny.rstudio.com/gallery/basic-datatable.html)
 - Create a new multi file shiny app in the IDE by going to 'File' and select 'New File' and select 'Shiny Web App...' and create a new multiple file app and title it 'Statshiny' (or use the one you already created)
 - Copy over the ui.R and app.R files with the code found [here:](https://github.com/rstudio/shiny-examples/tree/master/030-basic-datatable)
 - Click 'Run App' in the IDE when done
-- See if you can get it to work with the ToothGrowth Data
 - Github circle
 
-</div>
 
 ## Example shiny App &mdash; `ui.R`
 
@@ -937,12 +801,10 @@ shinyApp(ui, server)
 </div>
 
 ## Let's Repeat Process with AE Dataset
-<div class="red2"> 
 - statistical_programming_examples
 - https://shiny.rstudio.com/articles/scoping.html
 - [global.r](https://mraess.netlify.com/2018/07/the-awesomeness-that-is-the-global-r-file-or-how-to-clean-up-your-shiny-app/)
 - https://shiny.rstudio.com/articles/dynamic-ui.html
-</div>
 
 ## Trick to get more examples
 - Don't have to copy paste
@@ -1029,15 +891,9 @@ Server program that lets you host and manage shiny web applications and interact
 - https://github.com/dreamRs/esquisse
 </div>
 
-## Your Turn 3 Mins
-
-<div class="red2"> 
-
+## Your Turn
 - Deploy yournameShiny
 - Make a change to app
-- [Step 6: Open RStudio Connect](https://github.com/sol-eng/classroom-getting-started)
-
-</div>
 
 ## Debugging not covered
 
@@ -1062,26 +918,13 @@ Server program that lets you host and manage shiny web applications and interact
 - http://shiny.rstudio.com/gallery/reactivity.html
 - http://shiny.rstudio.com/articles/#reactivity
 - https://blog.rstudio.com/2019/04/26/shiny-1-3-2/
-- [Intro Part 1](https://resources.rstudio.com/shiny-developer-conference/shinydevcon-reactivity-joecheng-part-1-1080p)
-- [Part 2](https://resources.rstudio.com/shiny-developer-conference/shinydevcon-reactivity-joecheng-part-2-1080p)
-- https://mastering-shiny.org/basic-reactivity.html#reactive-programming
-- [ReactLog](https://blog.rstudio.com/2019/04/26/shiny-1-3-2/)
-
 
 ## Production & Scaling not covered
 - [Shiny in production](https://resources.rstudio.com/rstudio-conf-2019/shiny-in-production-principles-practices-and-tools-joe-cheng)
-- [Effective use of Shiny modules in application development - Eric Nantz](https://resources.rstudio.com/rstudio-conf-2019/effective-use-of-shiny-modules-in-application-development)
+[Effective use of Shiny modules in application development - Eric Nantz](https://resources.rstudio.com/rstudio-conf-2019/effective-use-of-shiny-modules-in-application-development)
 - https://kellobri.github.io/shiny-prod-book/course-intro.html
 - https://github.com/jcheng5/rpharma-demo
 - https://rstudio.github.io/shinyloadtest/
-- https://github.com/ThinkR-open/golem
-
-## shinymeta not covered
-- https://rstudio.github.io/shinymeta/
-- https://github.com/rstudio/shinymeta
-- https://www.youtube.com/watch?v=5KByRC6eqC8
-- https://towardsdatascience.com/shinymeta-a-revolution-for-reproducibility-bfda6b329f68
-- 
   
 ## Shiny Examples - Try One During Our Break
 
@@ -1119,9 +962,8 @@ Server program that lets you host and manage shiny web applications and interact
 - https://beta.rstudioconnect.com/content/3145/Resources_Links_on_Using_R_in_Regulated_Clinical_Trial_Environments.html
 - https://github.com/ropensci/drake
 
-## renv/Packrat - Info
+## Packrat - Info
 
-- https://github.com/rstudio/renv
 - https://rstudio.github.io/packrat/
 - https://beta.rstudioconnect.com/content/2715/Up-to-Bat-with-Packrat.html
 - Packrat is an R package that implements a dependency management system for R.
@@ -1132,7 +974,6 @@ Server program that lets you host and manage shiny web applications and interact
 - https://github.com/philbowsher/Boston-Rocker
 - https://www.londonr.org/wp-content/uploads/sites/2/2018/09/LondonR_Highlights_from_EARL_2018.pdf
 - https://support.rstudio.com/hc/en-us/articles/360021594513
-- [Kubernetes](https://support.rstudio.com/hc/en-us/articles/360019253393-Using-Docker-images-with-RStudio-Server-Pro-Launcher-and-Kubernetes)
 
 ## Development Process
 - ["I created a quick plot, that then turned into a R Notebook, that then turned into an interactive dashboard."](https://www.linkedin.com/pulse/its-nonlinear-world-interactive-dashboard-edgar-ruiz/)
@@ -1167,7 +1008,6 @@ survival analysis in R](http://rpubs.com/alecri/258589)
  - Framework for writing reproducible reports from R
  - https://bookdown.org/yihui/rmarkdown/
  - https://www.youtube.com/watch?v=HVlwNayog-k
- - https://rmd4medicine.netlify.com
  
 <div class="img-col">
    ![rmarkdown](Rmarkdown1.png)
@@ -1190,33 +1030,20 @@ survival analysis in R](http://rpubs.com/alecri/258589)
 ## Using R Markdown - How to Build a Document - Installation & Structure
 
  - Comes installed with the RStudio IDE
- - knitr executes the code and converts .Rmd to .md; Pandoc renders the .md file to the output format you want.
  - File Template - within RStudio
  - ["Add R code - Code Chunks"](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) 
+ - 
  - ["R Markdown Cheat Sheet"](http://shiny.rstudio.com/articles/rm-cheatsheet.html) 
  - Enhance with Shiny functions and R code
- 
-## Chunks
- - Utilize Chunk Options & Labels - echo=FALSE, results="hide", include=FALSE, warning=FALSE, eval=TRUE & message=FALSE 
- - setup chunk
- - str(knitr::opts_chunk$get())
+ - Utilize Chunk Options - echo=FALSE, results="hide", include=FALSE, warning=FALSE & message=FALSE 
  - Global chunk options
  
-
-## YAML
-- metadata: YAML "YAML Ain't Markup Language"
-- Indentations matter
-- Rarely informative error messages
-
- 
-## Your Turn Example R Markdown Doc -- `Example.RMD` 
-
-<div class="red2"> 
+## Example R Markdown Doc -- `Example.RMD` 
 
 - Create a new R Markdown document in the IDE by going to 'File' and select 'New File' and select 'R Markdown...' and create a new document and leave output as HTML
 <div class="columns-4">![Rmarkdown2](Rmarkdown2.png)</a> </div>
 
-- Then select Knit and save it as Example.RMD </td> </div>
+- Then select Knit and save it as Example.RMD </td>
 <td><img src="Rmarkdown3.png" width="200" /></td>
 </tr>
 </table>
@@ -1261,7 +1088,35 @@ survival analysis in R](http://rpubs.com/alecri/258589)
 
 
 
+# Genius of R Markdown...
 
+## Part 2.0 - R Notebooks
+
+<div class="columns-2">
+- [Notebooks](http://rmarkdown.rstudio.com/r_notebooks.html)
+- [Notebook Background](https://rviews.rstudio.com/2017/03/15/why-i-love-r-notebooks/)
+- [Using rmarkdown and parameterised reports Mike K Smith](https://resources.rstudio.com/rstudio-conf-2019/the-lazy-and-easily-distracted-report-writer-using-rmarkdown-and-parameterised-reports)
+- Leonardo da Vinci…Page from the Codex Atlanticus shows notes and images about water wheels and Archimedean Screws
+- Combine in a single document: Narrative, Code, Output & then Render to HTML
+
+<div class="img-col">
+<a href="https://blog.rstudio.com/2016/10/05/r-notebooks/">![labnotebook4](labnotebook4.png)</a>
+
+</div>
+
+## Part 2.0 - R Notebooks cont.
+
+<div class="columns-2">
+- Number 3: Notebooks are for doing science
+- Number 2: R Notebooks have great features
+- Number 1: R Notebooks make it easy to create and share reports
+- http://r4ds.had.co.nz/r-markdown-workflow.html
+- 3_RMD_Notebook_Tidyverse
+
+<div class="img-col">
+<a href="http://rmarkdown.rstudio.com/r_notebooks.html#saving_and_sharing">![notebook-demo](notebook-demo.png)</a>
+
+</div>
 
 # The Evolution of R Markdown
 
@@ -1271,19 +1126,11 @@ survival analysis in R](http://rpubs.com/alecri/258589)
 - [flexdashboard](http://rmarkdown.rstudio.com/flexdashboard/)
 - [Gene Expression Biclustering - Bryan Lewis](https://jjallaire.shinyapps.io/shiny-biclust/)
 - [Iris K-Means Clustering](https://jjallaire.shinyapps.io/shiny-kmeans/)
-- [Using Flexdashboards to Monitor Clinical Research](https://jenthompson.me/examples/progressdash.html)
-- [MOSAIC Study Progress](https://jenthompson.me/examples/progressdash.html)
 
 <div class="img-col">
 <a href="https://jjallaire.shinyapps.io/shiny-biclust/">![rmarkdown3](flex.png)</a>
 
 </div>
-
-## flexdashboard: Easy interactive dashboards for R
-
-<td><img src="flexdb.png" width="500" /></td>
-</tr>
-</table>
 
 ## Before Flexdashboard
 
@@ -1298,33 +1145,13 @@ survival analysis in R](http://rpubs.com/alecri/258589)
 
 # Generating Various Versions of a Dashboard
 
-
 ## rmarkdown::render -- `1_RMD_Stocks`
 
 - rmarkdown::render(“Stocks.Rmd”, params = list(symbol=‘IBM’))
 - https://beta.rstudioconnect.com/content/3132/Job_Scheduling_R_Markdown_Reports_via_R.html
-- 1_RMD_Stocks
-
-## Purr
-
-<td><img src="purr.png" width="800" /></td>
-</tr>
-</table>
-
-## Various Reports
-<div class="red2"> 
-
 - 6_RMD_Report_Versions
--build_airplane_report, run this function as well as the list
-above it
-- Then run the purr command at the bottom
-- See how the reports generate dynamically?
-- How would you automate this? Ask your neighbor 
-- Don’t forget to set the WD
-- Review the airplane-report.Rmd
-- Notice how it is connecting to a DB?
+- 1_RMD_Stocks
 - https://scottishsnow.wordpress.com/2018/08/17/many-reports-from-1-rmarkdown-file/
-</div>
  
 ## R Markdown Websites
 
@@ -1366,6 +1193,7 @@ above it
  - https://beta.rstudioconnect.com/content/3060/Word_Up_Gotta_Get_Up_To_Get_Bookdown.html
  - https://georgecushen.com/files/talks/EARL2018_Project-Kickstart-R.pdf
  - https://nlmixrdevelopment.github.io/nlmixr_bookdown/references.html
+ - https://bookdown.org/taragonmd/phds/
  
 ## pkgdown
  
@@ -1513,15 +1341,7 @@ https://beta.rstudioconnect.com/content/2671/Combining-Shiny-R-Markdown.html
 
 </div>
 
-## Add plotly to Shiny
-<div class="red2"> 
-
-- Add plotly to 2_Shiny_ToothGrowth_ggplot2 
-- Now add plotly to this [https://jjallaire.shinyapps.io/shiny-ggplot2-diamonds/](example)
-
-- Which is easier?
-
-</div>
+## 2_Shiny_nlmixr_plotly
 
 ## What Shiny functions are being used below?
 ```{r, echo=FALSE}
@@ -1579,21 +1399,12 @@ bscols(widths = c(3,NA,NA),
 - Shiny, RMD, HTML Widget Exercises
 - https://github.com/sol-eng/rsc-portfolio-training
 
-## Your Turn
-- RStudio Connect Hands On Folder
-- Open the README in the folder from above
-- If we are short on time, publish 8_RMD_Flex_Perams or 9_RMD_stock_flexdashboard to RSC
-- https://github.com/sol-eng/classroom-gettingstarted
 
 
 
-# Python (Coming Soon)
 
-## Python
-- https://rstudio.github.io/reticulate/
-- https://blog.rstudio.com/2018/10/09/rstudio-1-2-preview-reticulated-python/
-- https://rviews.rstudio.com/2018/04/17/reticulated-shiny/
-- https://keras.rstudio.com/
+
+
 
 
 # Databases
@@ -1934,7 +1745,6 @@ for control and elimination of London Declaration NTDs](https://erasmusmcmgz.shi
 - 1.2
 - pkgdown
 - https://support.rstudio.com/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio
-- https://github.com/rinpharma/rinpharma2019program/tree/master/talks_folder
 
 ## My Pharma Team
 - https://www.edgarsdatalab.com/
