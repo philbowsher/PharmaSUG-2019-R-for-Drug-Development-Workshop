@@ -109,9 +109,9 @@ server <- function(input, output, session) {
   output$total_flights <- renderValueBox({
     # The following code runs inside the database
     result <- db_flights %>%
-      filter(carrier == input$airline)
+      filter(carrier == !! input$airline)
     
-    if(input$month != 99) result <- filter(result, month == input$month)
+    if(input$month != 99) result <- filter(result, month == !! input$month)
     
     result <- result %>%
       tally() %>%
@@ -127,9 +127,9 @@ server <- function(input, output, session) {
     
     # The following code runs inside the database
     result <- db_flights %>%
-      filter(carrier == input$airline)
+      filter(carrier == !! input$airline)
     
-    if(input$month != 99) result <- filter(result, month == input$month)
+    if(input$month != 99) result <- filter(result, month == !! input$month)
     result <- result %>%
       group_by(day, month) %>%
       tally() %>%
@@ -147,9 +147,9 @@ server <- function(input, output, session) {
     
     # The following code runs inside the database
     result <- db_flights %>%
-      filter(carrier == input$airline)
+      filter(carrier == !! input$airline)
     
-    if(input$month != 99) result <- filter(result, month == input$month)
+    if(input$month != 99) result <- filter(result, month == !! input$month)
     result <- result %>%
       mutate(delayed = ifelse(dep_delay >= 15, 1, 0)) %>%
       summarise(delays = sum(delayed),
@@ -172,15 +172,15 @@ server <- function(input, output, session) {
     
     if(input$month != 99) {
       result <- db_flights %>%
-        filter(month == input$month,
-               carrier == input$airline) %>%
+        filter(month == !! input$month,
+               carrier == !! input$airline) %>%
         group_by(day) %>%
         tally() %>%
         collect()
       group_name <- "Daily"
     } else {
       result <- db_flights %>%
-        filter(carrier == input$airline) %>%
+        filter(carrier == !! input$airline) %>%
         group_by(month) %>%
         tally() %>%
         collect()    
@@ -208,9 +208,9 @@ server <- function(input, output, session) {
   output$top_airports <- renderHighchart({
     # The following code runs inside the database
     result <- db_flights %>%
-      filter(carrier == input$airline) 
+      filter(carrier == !! input$airline) 
     
-    if(input$month != 99) result <- filter(result, month == input$month) 
+    if(input$month != 99) result <- filter(result, month == !! input$month) 
     
     result <- result %>%
       group_by(dest_name) %>%
@@ -242,9 +242,9 @@ server <- function(input, output, session) {
                  if(tab_title %in% tab_list == FALSE){
                    details <- db_flights %>%
                      filter(dest_name == airport,
-                            carrier == input$airline)
+                            carrier == !! input$airline)
                    
-                   if(input$month != 99) details <- filter(details, month == input$month) 
+                   if(input$month != 99) details <- filter(details, month == !! input$month) 
                    
                    details <- details %>%
                      head(100) %>% 

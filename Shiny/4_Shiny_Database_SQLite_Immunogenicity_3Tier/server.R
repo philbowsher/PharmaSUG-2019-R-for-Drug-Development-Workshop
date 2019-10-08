@@ -58,7 +58,7 @@ shinyServer(function(input, output, session) {
     if (is.null(screeningDatanew())) return(NULL)
     
     df <- screeningDatanew() %>% 
-      mutate(Screening_Cutpoint = input$screening_cutpoint) %>% 
+      mutate(Screening_Cutpoint = !! input$screening_cutpoint) %>% 
       mutate(Signal_Response_No_Drug_log10 = log10(Signal_Response_No_Drug)) %>%
       collect()
   })
@@ -95,7 +95,7 @@ shinyServer(function(input, output, session) {
       mutate(Signal_Response_Difference = (as.numeric(Signal_Response_No_Drug) - as.numeric(Signal_Response_Drug))* 1.0)  %>%
       mutate(Signal_Response_Divide = as.numeric(Signal_Response_Difference) / as.numeric(Signal_Response_No_Drug)) %>%
       mutate(Percent_Signal_Inhibition_Drug = as.numeric(Signal_Response_Divide) * 100) %>% 
-      mutate(Confirmatory_Cutpoint = input$confirmatory_cutpoint) %>%
+      mutate(Confirmatory_Cutpoint = !! input$confirmatory_cutpoint) %>%
       mutate(Confirmatory_Result_Drug = ifelse(Percent_Signal_Inhibition_Drug > Confirmatory_Cutpoint, "Positive", "Negative")) %>% 
       select(-Signal_Response_Difference, -Signal_Response_Divide) %>%
       collect()
@@ -117,7 +117,7 @@ shinyServer(function(input, output, session) {
       mutate(Signal_Response_Difference = (as.numeric(Signal_Response_No_Drug) - as.numeric(Signal_Response_Drug))* 1.0) %>%
       mutate(Signal_Response_Divide = as.numeric(Signal_Response_Difference) / as.numeric(Signal_Response_No_Drug)) %>%
       mutate(Percent_Signal_Inhibition_Drug = as.numeric(Signal_Response_Divide) * 100) %>% 
-      mutate(Confirmatory_Cutpoint = input$confirmatory_cutpoint) %>%
+      mutate(Confirmatory_Cutpoint = !! input$confirmatory_cutpoint) %>%
       mutate(Confirmatory_Result_Drug = ifelse(Percent_Signal_Inhibition_Drug > Confirmatory_Cutpoint, "Positive", "Negative")) %>% 
       select(-Signal_Response_Difference, -Signal_Response_Divide) %>%
       left_join(titerDatanew(), by = "Sample_Number") %>%
@@ -245,7 +245,7 @@ shinyServer(function(input, output, session) {
     samples <- screeningDatanew() %>%
       select(Signal_Response_No_Drug, Sample_Number) %>%
       collect() %>% 
-      filter(Signal_Response_No_Drug >= quantile(Signal_Response_No_Drug, input$stDev)) %>%
+      filter(Signal_Response_No_Drug >= quantile(Signal_Response_No_Drug, !! input$stDev)) %>%
       pull(Sample_Number)
     
     # Uses the vector of the IDs to run another SQL statement

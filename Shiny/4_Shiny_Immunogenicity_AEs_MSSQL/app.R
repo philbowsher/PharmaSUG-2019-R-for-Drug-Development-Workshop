@@ -228,15 +228,15 @@ server <- function(input, output, session) {
   sample_data <- reactive({
     df <- samples %>%
       filter(
-        Blood_Type %in% input$blood,
-        AETERM %in% input$adverse,
-        SEX %in% input$gender, 
-        Weight >= input$min_weight,
-        Weight <= input$max_weight
+        Blood_Type %in% !! input$blood,
+        AETERM %in% !! input$adverse,
+        SEX %in% !! input$gender, 
+        Weight >= !! input$min_weight,
+        Weight <= !! input$max_weight
       ) %>%
       mutate(
-        Response_Drug = ifelse(Signal_Response_No_Drug > input$screening_cutoff, "Positive", "Negative"),
-        Response_No_Drug = ifelse(Percent_Signal_Inhibition_Drug > input$confirmatory_cutoff, "Positive", "Negative")
+        Response_Drug = ifelse(Signal_Response_No_Drug > !! input$screening_cutoff, "Positive", "Negative"),
+        Response_No_Drug = ifelse(Percent_Signal_Inhibition_Drug > !! input$confirmatory_cutoff, "Positive", "Negative")
       ) %>%
       mutate(
         True_Positive = ifelse(Response_Drug == "Positive" && Response_No_Drug == "Positive", "Yes", "No")
@@ -425,7 +425,7 @@ server <- function(input, output, session) {
         title = element_blank()
       )
   })
- 
+  
   # Details table -----------------------------------------
   output$details <- renderDataTable(
     sample_data() %>%

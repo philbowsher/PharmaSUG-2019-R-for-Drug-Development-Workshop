@@ -1,4 +1,5 @@
 # https://github.com/philbowsher/Job-Scheduling-R-Markdown-Reports-via-R
+library(magrittr)
 
 # Build a bunch of animal reports
 animals <- list("Elephant", "Giraffe", "Koala", "Anaconda")

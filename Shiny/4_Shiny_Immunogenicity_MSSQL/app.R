@@ -59,40 +59,40 @@ ui <- function(request) {
     dashboardHeader(title = "Study Results"),
     dashboardSidebar(
       selectInput("schema", "Select schema:",
-        schemata,
-        selected = 1
+                  schemata,
+                  selected = 1
       ),
       checkboxInput("tp_only", "True Positives Only"),
       selectInput("blood", "Blood Type:",
-        blood,
-        multiple = TRUE,
-        size = 5,
-        selected = blood,
-        selectize = FALSE
+                  blood,
+                  multiple = TRUE,
+                  size = 5,
+                  selected = blood,
+                  selectize = FALSE
       ),
       sliderInput("min_weight",
-        "Minimum Weight:",
-        min = ranges$min_weight,
-        max = ranges$max_weight,
-        value = ranges$min_weight
+                  "Minimum Weight:",
+                  min = ranges$min_weight,
+                  max = ranges$max_weight,
+                  value = ranges$min_weight
       ),
       sliderInput("max_weight",
-        "Maximum Weight:",
-        min = ranges$min_weight,
-        max = ranges$max_weight,
-        value = ranges$max_weight
+                  "Maximum Weight:",
+                  min = ranges$min_weight,
+                  max = ranges$max_weight,
+                  value = ranges$max_weight
       ),
       sliderInput("screening_cutoff",
-        "Screening Cutoff:",
-        min = 0,
-        max = ranges$max_sreening,
-        value = 0
+                  "Screening Cutoff:",
+                  min = 0,
+                  max = ranges$max_sreening,
+                  value = 0
       ),
       sliderInput("confirmatory_cutoff",
-        "Confirmatory Cutoff:",
-        min = 0,
-        max = ranges$max_sreening,
-        value = 0
+                  "Confirmatory Cutoff:",
+                  min = 0,
+                  max = ranges$max_sreening,
+                  value = 0
       ),
       bookmarkButton()
     ),
@@ -111,11 +111,11 @@ ui <- function(request) {
           fluidRow(
             box(
               plotOutput("hist_drug",
-                height = 250,
-                click = "plot_click",
-                dblclick = "plot_dblclick",
-                hover = "plot_hover",
-                brush = "plot_brush"
+                         height = 250,
+                         click = "plot_click",
+                         dblclick = "plot_dblclick",
+                         hover = "plot_hover",
+                         brush = "plot_brush"
               ),
               title = "Signal Response Drug",
               width = 4, height = 320,
@@ -180,13 +180,13 @@ server <- function(input, output, session) {
   sample_data <- reactive({
     df <- samples %>%
       filter(
-        Blood_Type %in% input$blood,
-        Weight >= input$min_weight,
-        Weight <= input$max_weight
+        Blood_Type %in% !! input$blood,
+        Weight >= !! input$min_weight,
+        Weight <= !! input$max_weight
       ) %>%
       mutate(
-        Response_Drug = ifelse(Signal_Response_Drug >= input$screening_cutoff, "Positive", "Negative"),
-        Response_No_Drug = ifelse(Signal_Response_No_Drug >= input$confirmatory_cutoff, "Positive", "Negative")
+        Response_Drug = ifelse(Signal_Response_Drug >= !! input$screening_cutoff, "Positive", "Negative"),
+        Response_No_Drug = ifelse(Signal_Response_No_Drug >= !! input$confirmatory_cutoff, "Positive", "Negative")
       ) %>%
       mutate(
         True_Positive = ifelse(Response_Drug == Response_No_Drug, "Yes", "No")
@@ -204,7 +204,7 @@ server <- function(input, output, session) {
       icon = icon("flask")
     )
   })
-
+  
   # Render - True positives value box ---------------------
   output$true_positives <- renderValueBox({
     valueBox(
@@ -217,7 +217,7 @@ server <- function(input, output, session) {
       color = "green"
     )
   })
-
+  
   # Render - Avg Weight value box -------------------------
   output$avg_weight <- renderValueBox({
     valueBox(
@@ -230,7 +230,7 @@ server <- function(input, output, session) {
       color = "purple"
     )
   })
-
+  
   # Render - Avg percent value box ------------------------
   output$avg_percent <- renderValueBox({
     valueBox(
@@ -315,9 +315,9 @@ server <- function(input, output, session) {
     waffle_colors <- c("#969696", "#1879bf", "white")
     if (length(parts) == 1) waffle_colors <- "#1879bf"
     waffle(parts,
-      rows = 5,
-      colors = waffle_colors,
-      legend_pos = "bottom"
+           rows = 5,
+           colors = waffle_colors,
+           legend_pos = "bottom"
     )
   })
   # Details table -----------------------------------------
@@ -341,11 +341,11 @@ server <- function(input, output, session) {
   observeEvent(input$blood_click, {
     vals <- round(input$blood_click$y, 0)
     vals <- blood[vals]
-
+    
     updateSelectInput(session, "blood",
-      selected = vals
+                      selected = vals
     )
-
+    
     updateTabsetPanel(session, "tabs", selected = "page2")
   })
 }

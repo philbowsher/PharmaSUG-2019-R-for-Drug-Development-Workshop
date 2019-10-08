@@ -1,9 +1,9 @@
 library(haven)
 library(tidyverse)
 
-dm <- read_sas("~/shiny-rmd-APIs-DBs-pharma-session-2019-05-02/Data/dm.sas7bdat")
+dm <- read_sas("~/PharmaSUG-2019-R-for-Drug-Development-Workshop/Data/dm.sas7bdat")
 
-ae <- read_sas("~/shiny-rmd-APIs-DBs-pharma-session-2019-05-02/Data/ae.sas7bdat")
+ae <- read_sas("~/PharmaSUG-2019-R-for-Drug-Development-Workshop/Data/ae.sas7bdat")
 
 dmae <- ae %>%
   left_join(dm, by = 'USUBJID') %>% rename(STUDYID = STUDYID.x ,  DOMAIN = DOMAIN.x) %>%
@@ -31,12 +31,13 @@ dmae %>%
   count()
 
 
-ggplot(data = dmae, # add the data
+p <- ggplot(data = dmae, # add the data
        aes(x = AESER, y = AGE, # set x, y coordinates
            color = AESER)) +    # color by treatment
   geom_boxplot() +
   facet_grid(~SEX) # create panes base on health status
 
+gglabeller_example <- gglabeller(p, aes(label = rownames(dmae)))
 
 dmae %>% Filter(f = is.factor) %>% names
 
