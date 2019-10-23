@@ -34,8 +34,8 @@ samples <- screening %>%
   mutate(Signal_Response_Difference = Signal_Response_No_Drug - Signal_Response_Drug)  %>% 
   mutate(Signal_Response_Divide = Signal_Response_Difference / Signal_Response_No_Drug)  %>%
   mutate(Percent_Signal_Inhibition_Drug = Signal_Response_Divide * 100) %>%
-  mutate(Screening_Result_Drug = ifelse(Signal_Response_No_Drug > params$screening_cut_point, "Positive", "Negative")) %>%
-  mutate(Confirmatory_Result_Drug = ifelse(Percent_Signal_Inhibition_Drug > params$confirmatory_cut_point, "Positive", "Negative"))   %>%
+  mutate(Screening_Result_Drug = ifelse(Signal_Response_No_Drug > !! params$screening_cut_point, "Positive", "Negative")) %>%
+  mutate(Confirmatory_Result_Drug = ifelse(Percent_Signal_Inhibition_Drug > !! params$confirmatory_cut_point, "Positive", "Negative"))   %>%
   mutate(True_Positive = ifelse(Screening_Result_Drug == Confirmatory_Result_Drug, 1, 0)) %>%
   mutate_if(is.integer, as.numeric) 
 
